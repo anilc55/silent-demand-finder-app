@@ -13,6 +13,10 @@ export default function Navbar() {
         <Link href="/dashboard" style={linkStyle}>
           Dashboard
         </Link>
+
+        <Link href="/login" style={linkStyle}>
+          Login
+        </Link>
       </div>
     </div>
   );
