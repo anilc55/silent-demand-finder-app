@@ -4,66 +4,164 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Silent Demand Finder</title>
+
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #050b14;
-    color: #00ffcc;
+    background: linear-gradient(to right, #e3f2fd, #ffffff);
+    color: #222;
+}
+
+/* Menu Button */
+.menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 220px;
+    height: 100%;
+    background: #0d47a1;
+    color: white;
+    padding-top: 60px;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar a:hover {
+    background: #1565c0;
+}
+
+/* Main Area */
+.main {
+    padding: 70px 20px;
     text-align: center;
 }
 
-header {
-    padding: 40px 20px;
+/* Box */
+.search-box {
+    background: white;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-h1 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-p {
-    color: #cccccc;
-    max-width: 600px;
-    margin: auto;
-    line-height: 1.6;
+button {
+    padding: 10px 20px;
+    background: #0d47a1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.button {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 25px;
-    background: #00ffcc;
-    color: #000;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
+button:hover {
+    background: #1565c0;
 }
 
 footer {
     margin-top: 50px;
-    padding: 20px;
     font-size: 14px;
-    color: #777;
+    color: #555;
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<!-- Menu Icon -->
+<div class="menu-btn" onclick="openMenu()">☰</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <a href="#" onclick="closeMenu()">❌ Close</a>
+    <a href="#">Home</a>
+    <a href="#">Search</a>
+    <a href="#">Dashboard</a>
+    <a href="#">Contact</a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
     <h1>🚀 Silent Demand Finder</h1>
+
     <p>
         Find hidden online demand before anyone else.
         Build smart content. Earn more. Grow faster.
     </p>
 
-    <a href="#" class="button">Start Now</a>
-</header>
+    <!-- Search Box -->
+    <div class="search-box">
 
-<footer>
-    © 2026 Silent Demand Finder | Created by Anil Chauhan
-</footer>
+        <h3>Search Keyword</h3>
+
+        <input type="text" id="keyword" placeholder="Enter keyword...">
+
+        <br>
+
+        <button onclick="findDemand()">Find Demand</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <footer>
+        © 2026 Silent Demand Finder | Created by Anil Chauhan
+    </footer>
+
+</div>
+
+<!-- JavaScript -->
+<script>
+
+function openMenu() {
+    document.getElementById("sidebar").style.left = "0";
+}
+
+function closeMenu() {
+    document.getElementById("sidebar").style.left = "-250px";
+}
+
+function findDemand() {
+    let key = document.getElementById("keyword").value;
+
+    if(key === "") {
+        alert("Please enter a keyword!");
+        return;
+    }
+
+    document.getElementById("result").innerHTML =
+        "✅ Searching demand for: <b>" + key + "</b><br>Result coming soon...";
+}
+
+</script>
 
 </body>
 </html>
